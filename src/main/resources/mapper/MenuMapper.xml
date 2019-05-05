@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.mapper.MenuMapper">
+    <insert id="insert" parameterType="com.test.entity.Menu">
+        insert into t_menu (
+                     id,
+                     treeName,
+                     menuType,
+                     menuName,
+                     url,
+                     perms,
+                     orderNum,
+                     icon,
+                     visible,
+                     creatTime,
+                     updateTime,
+                     deleteFlag
+
+        ) values (
+                     #{id},
+                     #{treeName},
+                     #{menuType},
+                     #{menuName},
+                     #{url},
+                     #{perms},
+                     #{orderNum},
+                     #{icon},
+                     #{visible},
+                     #{creatTime},
+                     #{updateTime},
+                     #{deleteFlag}
+
+        )
+    </insert>
+
+    <update id="update" parameterType="com.test.entity.Menu">
+        update t_menu
+        <if test="treeName != null and treeName != ''">
+            set treeName = #{treeName},
+        </if>
+
+        <if test="menuType != null and menuType != ''">
+            set menuType = #{menuType},
+        </if>
+
+        <if test="menuName != null and menuName != ''">
+            set menuName = #{menuName},
+        </if>
+        <if test="url != null and url != ''">
+            set url = #{url},
+        </if>
+        <if test="perms != null and perms != ''">
+            set perms = #{perms},
+        </if>
+        <if test="orderNum != null and orderNum != ''">
+            set orderNum = #{orderNum},
+        </if>
+
+        <if test="icon != null and icon != ''">
+            set icon = #{icon},
+        </if>
+
+        <if test="visible != null and visible != ''">
+            set visible = #{visible},
+        </if>
+        <if test="updateTime != null and updateTime != ''">
+            set updateTime = #{updateTime},
+        </if>
+        <if test="creatTime != null and creatTime != ''">
+            set creatTime = #{creatTime},
+        </if>
+        <if test="deleteFlag != null and deleteFlag != ''">
+            set deleteFlag = #{deleteFlag},
+        </if>
+
+        where id = #{id}
+    </update>
+
+
+    <delete id="delete" parameterType="com.test.entity.Menu">
+        delete from t_menu where id = #{id}
+    </delete>
+
+
+</mapper>

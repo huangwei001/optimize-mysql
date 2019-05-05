@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.mapper.UserMapper">
+    <insert id="insertUser" parameterType="com.test.entity.User">
+        insert into t_user (
+                    id,
+                    name,
+                    old,
+                    sex,
+                    tel,
+                    address,
+                    idCard,
+                    passWord,
+                    creatTime,
+                    updateTime,
+                    departMent,
+                    status
+
+        ) values (
+                    #{id},
+                    #{name},
+                    #{old},
+                    #{sex},
+                    #{tel},
+                    #{address},
+                    #{idCard},
+                    #{passWord},
+                    #{creatTime},
+                    #{updateTime},
+                    #{departMent},
+                    #{status}
+
+        )
+    </insert>
+
+    <update id="updateUser" parameterType="com.test.entity.User">
+        update t_user
+        <if test="name != null and name != ''">
+            set name = #{name},
+        </if>
+
+        <if test="old != null and old != ''">
+            set old = #{old},
+        </if>
+
+        <if test="sex != null and sex != ''">
+            set sex = #{sex},
+        </if>
+        <if test="tel != null and tel != ''">
+            set tel = #{tel},
+        </if>
+        <if test="address != null and address != ''">
+            set address = #{address},
+        </if>
+        <if test="idCard != null and idCard != ''">
+            set idCard = #{idCard},
+        </if>
+
+        <if test="passWord != null and passWord != ''">
+            set passWord = #{passWord},
+        </if>
+
+        <if test="creatTime != null and creatTime != ''">
+            set creatTime = #{creatTime},
+        </if>
+        <if test="updateTime != null and updateTime != ''">
+            set updateTime = #{updateTime},
+        </if>
+        <if test="departMent != null and departMent != ''">
+            set departMent = #{departMent},
+        </if>
+        <if test="status != null and status != ''">
+            set status = #{status},
+        </if>
+
+        where id = #{id}
+    </update>
+
+
+    <delete id="deleteUser" parameterType="com.test.entity.User">
+        delete from t_user where id = #{id}
+    </delete>
+
+
+</mapper>
